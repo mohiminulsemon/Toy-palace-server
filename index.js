@@ -45,6 +45,11 @@ async function run() {
         res.send(result);
     });
 
+    app.get('/all-toys',async(req, res) => {
+        const toys = toyCollection.find();
+        const result = await toys.toArray();
+        res.send(result);
+    })
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
