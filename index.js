@@ -81,6 +81,18 @@ async function run() {
 
     });
 
+    // get one toy information
+    app.get('/toys/:id', async(req, res)=>{
+      const id= req.params.id
+      
+      const filter = {_id : new ObjectId(id)}
+  
+      const data = await toyCollection.findOne(filter)
+  
+      res.send(data)
+  
+  })
+
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
