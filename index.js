@@ -45,12 +45,14 @@ async function run() {
         res.send(result);
     });
 
+    //find all the data
     app.get('/all-toys',async(req, res) => {
         const toys = toyCollection.find();
         const result = await toys.toArray();
         res.send(result);
     })
 
+    // update toys data
     app.patch('/toys/:id', async(req,res) => {
       const id = req.params.id;
       const updatedToysData = req.body;
@@ -67,6 +69,7 @@ async function run() {
     });
 
 
+    // delete toy data
     app.delete('/toys/:id', async(req,res) => {
       const id = req.params.id;
      
